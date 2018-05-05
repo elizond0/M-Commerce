@@ -41,6 +41,20 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * 在src/components下新增pages,放置组件
 
 ## 5.首页搜索区
-* shoppingMall.vue使用vant组件完成骨架
+* shoppingMall.vue使用vant组件完成骨架,main.js下引入{Button,Row,Col}
 * [iconFont](http://www.iconfont.cn/)图标选取
 * vue组件内图标引入,使用:src绑定路径,require引入相对路径,避免编译时出错
+
+## 6.首页轮播图
+* shoppingMall.vue的js部分写入一个data参数bannerPicArray，把图片地址放入到里边
+* 修改模版文件
+<pre>
+    <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="(banner,index) in bannerPicArray" :key="index">
+            <img :src="banner.imageUrl" width="100%"/>
+        </van-swipe-item>
+    </van-swipe>
+</pre>
+* Vant实现图片轮播懒加载
+1. 引入Vant的图片懒加载组件 import {Lazyload} from 'vant' ; Vue.use(Lazyload)
+2. template部分,修改img标签 v-lazy="banner.imageUrl"
