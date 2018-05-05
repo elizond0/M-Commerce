@@ -1,11 +1,11 @@
 # M-Commerce
 
 ## 0.简介
-Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能，注册登录，积分系统，签到制作，查找页面，后台接口设置，权限管理。  
-技术栈包括：Vue+Vuex+Router+Vant+Node+Koa2+Mongoose+MongoDB  
+Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能，注册登录，积分系统，签到制作，查找页面，后台接口设置，权限管理。
+技术栈包括：Vue+Vuex+Router+Vant+Node+Koa2+Mongoose+MongoDB
 
-## 1.项目初始化 
-1. $ vue init webpack  使用vue-cli生成项目目录 
+## 1.项目初始化
+1. $ vue init webpack  使用vue-cli生成项目目录
 2. $ npm run dev  运行测试环境(http://localhost:8080)
 
 ## 2.引入Vant组件库
@@ -34,3 +34,8 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
     //设置根元素字体大小
     htmlDom.style.fontSize= htmlWidth/20 + 'px';
 </pre>
+
+## 4.首页布局和路由设置
+* 去除默认无关配置,如helloword.vue等
+* 首页路由的配置:src/router/index.js,详情见文件
+* 在src/components下新增pages,放置组件
