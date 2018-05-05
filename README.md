@@ -39,3 +39,8 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * 去除默认无关配置,如helloword.vue等
 * 首页路由的配置:src/router/index.js,详情见文件
 * 在src/components下新增pages,放置组件
+
+## 5.首页搜索区
+* shoppingMall.vue使用vant组件完成骨架
+* [iconFont](http://www.iconfont.cn/)图标选取
+* vue组件内图标引入,使用:src绑定路径,require引入相对路径,避免编译时出错
