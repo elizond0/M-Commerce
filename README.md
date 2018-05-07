@@ -58,3 +58,8 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * Vant实现图片轮播懒加载
 1. 引入Vant的图片懒加载组件 import {Lazyload} from 'vant' ; Vue.use(Lazyload)
 2. template部分,修改img标签 v-lazy="banner.imageUrl"
+
+## 7.easyMock(模拟数据)和axios
+* [Mock数据准备](https://www.easy-mock.com/)，获得请求地址url，详情见其官网api
+* axios的引入 $ npm install --save axios
+* 在created的生命周期里取得数据，见shoppingMall.vue

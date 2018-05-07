@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -37,6 +39,16 @@ export default {
         { imageUrl: require("../../assets/images/simleVueDemoPic003.jpg") }
       ]
     };
+  },
+  created() {
+    axios({
+      url: " https://www.easy-mock.com/mock/5af00fd49d036f65711bbb51/getList",
+      method: "get"
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {});
   }
 };
 </script>
