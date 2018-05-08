@@ -63,3 +63,8 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * [Mock数据准备](https://www.easy-mock.com/)，获得请求地址url，详情见其官网api
 * axios的引入 $ npm install --save axios
 * 在created的生命周期里取得数据，见shoppingMall.vue
+
+## 8.Mock数据的使用
+* 判断获取状态,将数据赋值,if(response.status==200){this.key=response.data.data.key}
+* data下的return值需要提前声明空数组,data(){return {key:[]}}
+* html通过v-for循环数据

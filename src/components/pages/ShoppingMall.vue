@@ -22,7 +22,17 @@
             </van-swipe-item>
         </van-swipe>
     </div>
-
+    <!-- type-bar -->
+    <div class="type-bar">
+      <div v-for="(cate,index) in category" :key="index">
+        <img v-lazy="cate.image" width="90%" alt="">
+        <span>{{cate.mallCategoryName}}</span>
+      </div>
+    </div>
+    <!-- ad-banner -->
+    <div class="ad-banner">
+      <img v-lazy="adBanner.PICTURE_ADDRESS" width="100%" alt="">
+    </div>
   </div>
 </template>
 
@@ -33,11 +43,9 @@ export default {
   data() {
     return {
       locationIcon: require("../../assets/images/location.png"),
-      bannerPicArray: [
-        { imageUrl: require("../../assets/images/simleVueDemoPic001.jpg") },
-        { imageUrl: require("../../assets/images/simleVueDemoPic002.jpg") },
-        { imageUrl: require("../../assets/images/simleVueDemoPic003.jpg") }
-      ]
+      bannerPicArray: [],
+      category: [],
+      adBanner: []
     };
   },
   created() {
@@ -46,7 +54,12 @@ export default {
       method: "get"
     })
       .then(response => {
-        console.log(response);
+        // console.log(response);
+        if (response.status === 200) {
+          this.category = response.data.data.category;
+          this.adBanner = response.data.data.advertesPicture;
+          this.bannerPicArray = response.data.data.slide;
+        }
       })
       .catch(error => {});
   }
@@ -78,5 +91,19 @@ export default {
   clear: both;
   max-height: 10rem;
   overflow: hidden;
+}
+.type-bar {
+  background-color: #fff;
+  margin: 0 0.3rem 0.3rem 0.3rem;
+  border-radius: 0.3rem;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.type-bar div {
+  padding: 0.3rem;
+  font-size: 12px;
+  text-align: center;
 }
 </style>
