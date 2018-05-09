@@ -68,3 +68,9 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * 判断获取状态,将数据赋值,if(response.status==200){this.key=response.data.data.key}
 * data下的return值需要提前声明空数组,data(){return {key:[]}}
 * html通过v-for循环数据
+
+## 9.商品推荐vue-awesome-swiper
+* vue-awesome-swiper安装：$ npm install vue-awesome-swiper
+* 组件形式引入样式路径+组件名:import "swiper/dist/css/swiper.css";import {swiper swiperSlide} form 'vue-awesome-swiper'
+* data下声明变量,created中获取数据
+* swiper相关配置,详情见受shoppingMall.vue
