@@ -26,15 +26,14 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 * rem单位是相对根元素（即html元素）字体大小的长度单位
 1. css中将px单位换算成rem
 2. JS控制适配屏幕
-<pre>
+```
     //得到手机屏幕的宽度
     let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
     //得到html的Dom元素
     let htmlDom = document.getElementsByTagName('html')[0];
     //设置根元素字体大小
     htmlDom.style.fontSize= htmlWidth/20 + 'px';
-</pre>
-
+```
 ## 4.首页布局和路由设置
 * 去除默认无关配置,如helloword.vue等
 * 首页路由的配置:src/router/index.js,详情见文件
@@ -48,12 +47,13 @@ Vue.js+Koa2移动电商系统，包括首页展示，类别展示，购物功能
 ## 6.首页轮播图
 * shoppingMall.vue的js部分写入一个data参数bannerPicArray，把图片地址放入到里边
 * 修改模版文件
-<pre>
-    <van-swipe :autoplay="3000">
-        <van-swipe-item v-for="(banner,index) in bannerPicArray" :key="index">
-            <img :src="banner.imageUrl" width="100%"/>
-        </van-swipe-item>
-    </van-swipe>
+```
+<van-swipe :autoplay="3000">
+    <van-swipe-item v-for="(banner,index) in bannerPicArray" :key="index">
+        <img :src="banner.imageUrl" width="100%"/>
+    </van-swipe-item>
+</van-swipe>
+```
 </pre>
 * Vant实现图片轮播懒加载
 1. 引入Vant的图片懒加载组件 import {Lazyload} from 'vant' ; Vue.use(Lazyload)
