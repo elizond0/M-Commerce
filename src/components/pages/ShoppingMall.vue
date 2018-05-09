@@ -86,7 +86,7 @@ export default {
           this.recommendGoods = response.data.data.recommend;
         }
       })
-      .catch(error => {});
+      .catch(error => {alert(error)});
   },
   components: {
     swiper,
