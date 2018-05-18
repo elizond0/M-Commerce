@@ -16,9 +16,9 @@
     </div>
     <!--swipwer area-->
     <div class="swiper-area">
-        <van-swipe :autoplay="3000">
+        <van-swipe :autoplay="0">
             <van-swipe-item v-for="(banner,index) in bannerPicArray" :key="index">
-                <img v-lazy="banner.imageUrl" width="100%"/>
+                <img v-lazy="banner.image" width="100%"/>
             </van-swipe-item>
         </van-swipe>
     </div>
@@ -47,8 +47,14 @@
                 <div>￥{{item.price}} (￥{{item.mallPrice}})</div>
               </div>
             </swiper-slide>
-          </swiper>           
+          </swiper>
         </div>
+    </div>
+    <!-- 自定义swiper组件 -->
+    <div>
+      <swiperDefault></swiperDefault>
+      <swiperDefault1></swiperDefault1>
+      <swiperDefault2></swiperDefault2>
     </div>
   </div>
 </template>
@@ -57,6 +63,9 @@
 import axios from "axios";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import swiperDefault from "../swiper/swiperDefault";
+import swiperDefault1 from "../swiper/swiperDefault1";
+import swiperDefault2 from "../swiper/swiperDefault2";
 
 export default {
   data() {
@@ -82,15 +91,20 @@ export default {
         if (response.status === 200) {
           this.category = response.data.data.category;
           this.adBanner = response.data.data.advertesPicture;
-          this.bannerPicArray = response.data.data.slide;
+          this.bannerPicArray = response.data.data.slides;
           this.recommendGoods = response.data.data.recommend;
         }
       })
-      .catch(error => {alert(error)});
+      .catch(error => {
+        alert(error);
+      });
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    swiperDefault,
+    swiperDefault1,
+    swiperDefault2
   }
 };
 </script>
@@ -153,5 +167,8 @@ export default {
   border-right: 1px solid #eee;
   font-size: 12px;
   text-align: center;
+}
+.swiper-area {
+  height: 145px;
 }
 </style>
