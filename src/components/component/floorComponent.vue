@@ -1,7 +1,8 @@
 <template>
     <div>
-        <!--floor one area-->
+        <!--floor area-->
         <div class="floor">
+          <div class="floor-title"> {{floorTitle}} </div>
             <div class="floor-anomaly">
                 <div class="floor-one"><img :src="floorData0.image" width="100%" /></div>
                 <div>
@@ -20,7 +21,7 @@
 
 <script>
 export default {
-  props: ["floorData"],//引用页面的template需要绑定属性进行props传值
+  props: ["floorData","floorTitle"], //引用页面的template需要绑定属性进行props传值
   data() {
     return {
       floorData0: {},
@@ -44,6 +45,13 @@ export default {
 </script>
 
 <style scoped>
+.floor-title {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
+}
+
 .floor-anomaly {
   display: flex;
   flex-direction: row;

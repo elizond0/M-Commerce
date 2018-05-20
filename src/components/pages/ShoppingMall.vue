@@ -57,12 +57,9 @@
       <swiperDefault2></swiperDefault2>
     </div> -->
     <!--floor area-->
-    <div>楼层1</div>
-    <floorComponent :floorData="floor1"></floorComponent>
-    <div>楼层2</div>
-    <floorComponent :floorData="floor2"></floorComponent>
-    <div>楼层3</div>
-    <floorComponent :floorData="floor3"></floorComponent>
+    <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
+    <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
+    <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
   </div>
 </template>
 
@@ -80,16 +77,18 @@ export default {
     return {
       msg: "shopping mall",
       locationIcon: require("../../assets/images/location.png"),
-      bannerPicArray: [],
-      category: [],
-      adBanner: [],
-      recommendGoods: [],
+      bannerPicArray: [], //轮播图片
+      category: [], //商品类别标签栏
+      adBanner: [], //广告图片
+      recommendGoods: [], //推荐商品
       swiperOption: {
+        //swiper组件配置
         slidesPerView: 3
       },
-      floor1: [],
+      floor1: [], //楼层数据
       floor2: [],
       floor3: [],
+      floorName: {} //楼层标题
     };
   },
   created() {
@@ -114,6 +113,9 @@ export default {
           // this.floor1_1 = this.floor1[1];
           // this.floor1_2 = this.floor1[2];
           // this.floor1_3 = this.floor1[3];
+
+          this.floorName = response.data.data.floorName;
+          console.log(response.data.data.floorName);
         }
       })
       .catch(error => {

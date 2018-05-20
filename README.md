@@ -133,3 +133,8 @@ swiperOption:{
 3. 子组件srcipt,通过watch监听异步获得的数据然后进行data赋值,props:['fllor']接收父组件传来的数据
 4. 子组件template,进行页面渲染和数据绑定
 
+## 13.完善楼层组件
+
+* 将楼层主题封装到楼层组件内,floorName
+1. floor组件template增加楼层标题,style增加样式,script增加props组件通信属性
+2. 父组件template内floor组件的标签绑定:floorTitle属性,scriot部分通过axios获取数据并赋值到data内
