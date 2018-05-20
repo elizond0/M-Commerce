@@ -51,10 +51,20 @@
         </div>
     </div>
     <!-- 自定义swiper组件 -->
-    <div>
+    <!-- <div>
       <swiperDefault></swiperDefault>
       <swiperDefault1></swiperDefault1>
       <swiperDefault2></swiperDefault2>
+    </div> -->
+    <!--floor one area-->
+    <div class="floor">
+        <div class="floor-anomaly">
+            <div class="floor-one"><img :src="floor1_0.image" width="100%" /></div>
+            <div>
+                <div class="floor-two"><img :src="floor1_2.image" width="100%" /></div>
+                <div><img :src="floor1_3.image" width="100%" /></div>
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -78,7 +88,8 @@ export default {
       recommendGoods: [],
       swiperOption: {
         slidesPerView: 3
-      }
+      },
+      floor1: [],
     };
   },
   created() {
@@ -93,6 +104,17 @@ export default {
           this.adBanner = response.data.data.advertesPicture;
           this.bannerPicArray = response.data.data.slides;
           this.recommendGoods = response.data.data.recommend;
+
+          // 楼层1数据
+          this.floor1 = response.data.data.floor1;
+          // 如果直接在模版中使用floor1[0].image取值会报错，这可能也是vue框架的一个限制
+          this.floor1_0 = this.floor1[0];
+          this.floor1_1 = this.floor1[1];
+          this.floor1_2 = this.floor1[2];
+          this.floor1_3 = this.floor1[3];
+
+          console.log(this.floor1);
+          console.log(this.floor1_0.image);
         }
       })
       .catch(error => {
@@ -101,10 +123,10 @@ export default {
   },
   components: {
     swiper,
-    swiperSlide,
-    swiperDefault,
-    swiperDefault1,
-    swiperDefault2
+    swiperSlide
+    // swiperDefault,
+    // swiperDefault1,
+    // swiperDefault2
   }
 };
 </script>
@@ -170,5 +192,22 @@ export default {
 }
 .swiper-area {
   height: 145px;
+}
+.floor-anomaly {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.floor-anomaly div {
+  width: 10rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.floor-one {
+  border-right: 1px solid #ddd;
+}
+.floor-two {
+  border-bottom: 1px solid #ddd;
 }
 </style>
