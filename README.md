@@ -123,3 +123,13 @@ swiperOption:{
 1. 获取楼层1的数据,在data里注册一个floor1的数组变量floor1:[]，在axios里得到数据
 2. 编写HTML的时候需要注意层次结构，原则就是先统一规划大体，然后再调整局部
 3. 使用了flex布局和box-sizing编写CSS样式
+
+## 12.楼层组件的封装和watch使用
+
+* 在src/components/下新建一个component的文件夹,新建floorComponent.vue文件
+* 父子组件通过props属性进行通讯,组件详情见src/components/component/floorComponent.vue文件
+1. 父组件script,通过axois获取数据进行赋值,
+2. 父组件template,绑定属性传值 :floorData=floor1
+3. 子组件srcipt,通过watch监听异步获得的数据然后进行data赋值,props:['fllor']接收父组件传来的数据
+4. 子组件template,进行页面渲染和数据绑定
+

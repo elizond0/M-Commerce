@@ -56,16 +56,13 @@
       <swiperDefault1></swiperDefault1>
       <swiperDefault2></swiperDefault2>
     </div> -->
-    <!--floor one area-->
-    <div class="floor">
-        <div class="floor-anomaly">
-            <div class="floor-one"><img :src="floor1_0.image" width="100%" /></div>
-            <div>
-                <div class="floor-two"><img :src="floor1_2.image" width="100%" /></div>
-                <div><img :src="floor1_3.image" width="100%" /></div>
-            </div>
-        </div>
-    </div>
+    <!--floor area-->
+    <div>楼层1</div>
+    <floorComponent :floorData="floor1"></floorComponent>
+    <div>楼层2</div>
+    <floorComponent :floorData="floor2"></floorComponent>
+    <div>楼层3</div>
+    <floorComponent :floorData="floor3"></floorComponent>
   </div>
 </template>
 
@@ -73,9 +70,10 @@
 import axios from "axios";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import swiperDefault from "../swiper/swiperDefault";
-import swiperDefault1 from "../swiper/swiperDefault1";
-import swiperDefault2 from "../swiper/swiperDefault2";
+// import swiperDefault from "../swiper/swiperDefault";
+// import swiperDefault1 from "../swiper/swiperDefault1";
+// import swiperDefault2 from "../swiper/swiperDefault2";
+import floorComponent from "../component/floorComponent";
 
 export default {
   data() {
@@ -90,6 +88,8 @@ export default {
         slidesPerView: 3
       },
       floor1: [],
+      floor2: [],
+      floor3: [],
     };
   },
   created() {
@@ -105,16 +105,15 @@ export default {
           this.bannerPicArray = response.data.data.slides;
           this.recommendGoods = response.data.data.recommend;
 
-          // 楼层1数据
+          // 楼层数据
           this.floor1 = response.data.data.floor1;
+          this.floor2 = response.data.data.floor2;
+          this.floor3 = response.data.data.floor3;
           // 如果直接在模版中使用floor1[0].image取值会报错，这可能也是vue框架的一个限制
-          this.floor1_0 = this.floor1[0];
-          this.floor1_1 = this.floor1[1];
-          this.floor1_2 = this.floor1[2];
-          this.floor1_3 = this.floor1[3];
-
-          console.log(this.floor1);
-          console.log(this.floor1_0.image);
+          // this.floor1_0 = this.floor1[0];
+          // this.floor1_1 = this.floor1[1];
+          // this.floor1_2 = this.floor1[2];
+          // this.floor1_3 = this.floor1[3];
         }
       })
       .catch(error => {
@@ -123,10 +122,11 @@ export default {
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
     // swiperDefault,
     // swiperDefault1,
-    // swiperDefault2
+    // swiperDefault2,
+    floorComponent
   }
 };
 </script>
@@ -192,22 +192,5 @@ export default {
 }
 .swiper-area {
   height: 145px;
-}
-.floor-anomaly {
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-}
-.floor-anomaly div {
-  width: 10rem;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-.floor-one {
-  border-right: 1px solid #ddd;
-}
-.floor-two {
-  border-bottom: 1px solid #ddd;
 }
 </style>
