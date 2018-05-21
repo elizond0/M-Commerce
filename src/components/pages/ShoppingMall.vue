@@ -44,7 +44,8 @@
               <div class="recommend-item">
                 <img v-lazy="item.image" width="80%" />
                 <div>{{item.goodsName}}</div>
-                <div>￥{{item.price}} (￥{{item.mallPrice}})</div>
+                <div>￥{{item.price}} (￥{{item.mallPrice|moneyFilter}})</div>
+                <!-- <div>￥{{item.price | moneyFilter}} (￥{{item.mallPrice | moneyFilter}})</div> -->
               </div>
             </swiper-slide>
           </swiper>
@@ -71,6 +72,7 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 // import swiperDefault1 from "../swiper/swiperDefault1";
 // import swiperDefault2 from "../swiper/swiperDefault2";
 import floorComponent from "../component/floorComponent";
+import {toMoney} from "@/filter/moneyFilter.js"; //@代表src目录,在/build/webpack.base.conf.js里找到这个配置项
 
 export default {
   data() {
@@ -115,7 +117,7 @@ export default {
           // this.floor1_3 = this.floor1[3];
 
           this.floorName = response.data.data.floorName;
-          console.log(response.data.data.floorName);
+          // console.log(response.data.data.floorName);
         }
       })
       .catch(error => {
@@ -128,7 +130,12 @@ export default {
     // swiperDefault,
     // swiperDefault1,
     // swiperDefault2,
-    floorComponent
+    floorComponent,
+  },
+  filters: {
+    moneyFilter(money = 0) {
+      return toMoney(money);
+    }
   }
 };
 </script>

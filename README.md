@@ -138,3 +138,9 @@ swiperOption:{
 * 将楼层主题封装到楼层组件内,floorName
 1. floor组件template增加楼层标题,style增加样式,script增加props组件通信属性
 2. 父组件template内floor组件的标签绑定:floorTitle属性,scriot部分通过axios获取数据并赋值到data内
+
+## 14.Filter的使用
+
+* 电商项目对钱的格式是有一定要求的,需要对钱的格式做一个过滤器处理。
+1. 新建src/filter/moneyFilter.js,并且在调用的组件内引入,components中注册
+2. 编写vue里的filter属性,template使用filter:{{item.price | moneyFilter}}
