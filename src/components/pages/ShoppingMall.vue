@@ -88,6 +88,7 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 import floorComponent from "../component/floorComponent";
 import { toMoney } from "@/filter/moneyFilter.js"; //@代表src目录,在/build/webpack.base.conf.js里找到这个配置项
 import goodsInfo from '../component/goodsInfoComponent' //商品显示组件
+import url from '@/serviceAPI.config.js'//引入后台服务器API
 
 export default {
   data() {
@@ -111,7 +112,7 @@ export default {
   },
   created() {
     axios({
-      url: " https://www.easy-mock.com/mock/5af00fd49d036f65711bbb51/getList",
+      url: url.getShoppingMallInfo,
       method: "get"
     })
       .then(response => {

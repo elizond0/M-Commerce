@@ -150,9 +150,15 @@ swiperOption:{
 * html/css部分在@/src/components/pages/shoppingMall.vue
 
 * Van-list组件的使用
-1. 引入List组件:在/src/App.vue文件中引入List组件
-2. shoppingMall.vue/script构造数据,data里声明hotGoods.
+1. 引入List组件:在/src/main.js文件中引入List组件
+2. 构造数据:shoppingMall.vue/script,data里声明hotGoods.
 3. axios里获得数据:this.hotGoods = response.data.data.hotGoods
 4. shoppingMall.vue/html中加入List组件，并使用van-row布局
 5. 使用/src/component/goodsInfoComponent.vue商品显示组件
 6. import引入组件,并在components里声明一下,最后模版内使用
+
+## 16. 编写后台服务接口配置文件
+
+* 开发中现在直接把数据接口文件写到了axios中，这样写如果地址改变或者接口改变，需要进入业务逻辑代码进行修改，维护起来会非常的麻烦。应该把项目中用到的接口都单独拿出来，作一个接口配置文件serviceAPI.config.js。
+1. src目录下建立serviceAPI.config.js
+2. 在要使用的文件中用import的形式引入,import url from '@/serviceAPI.config.js'
