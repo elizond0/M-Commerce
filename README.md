@@ -162,3 +162,11 @@ swiperOption:{
 * 开发中现在直接把数据接口文件写到了axios中，这样写如果地址改变或者接口改变，需要进入业务逻辑代码进行修改，维护起来会非常的麻烦。应该把项目中用到的接口都单独拿出来，作一个接口配置文件serviceAPI.config.js。
 1. src目录下建立serviceAPI.config.js
 2. 在要使用的文件中用import的形式引入,import url from '@/serviceAPI.config.js'
+
+## 17. 安装Koa2和MongoDB
+
+* 为了方便,后台管理的资源也放在本项目,前后台资源不进行分离,/src/service
+
+* Koa2:npm install --save koa
+
+* [MongoDB](https://www.mongodb.com/)
