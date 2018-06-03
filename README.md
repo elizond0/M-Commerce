@@ -124,7 +124,7 @@ swiperOption:{
 2. 编写HTML的时候需要注意层次结构，原则就是先统一规划大体，然后再调整局部
 3. 使用了flex布局和box-sizing编写CSS样式
 
-## 12.楼层组件的封装和watch使用
+## 12. 楼层组件的封装和watch使用
 
 * 在src/components/下新建一个component的文件夹,新建floorComponent.vue文件
 * 父子组件通过props属性进行通讯,组件详情见src/components/component/floorComponent.vue文件
@@ -133,14 +133,26 @@ swiperOption:{
 3. 子组件srcipt,通过watch监听异步获得的数据然后进行data赋值,props:['fllor']接收父组件传来的数据
 4. 子组件template,进行页面渲染和数据绑定
 
-## 13.完善楼层组件
+## 13. 完善楼层组件
 
 * 将楼层主题封装到楼层组件内,floorName
 1. floor组件template增加楼层标题,style增加样式,script增加props组件通信属性
 2. 父组件template内floor组件的标签绑定:floorTitle属性,scriot部分通过axios获取数据并赋值到data内
 
-## 14.Filter的使用
+## 14. Filter的使用
 
 * 电商项目对钱的格式是有一定要求的,需要对钱的格式做一个过滤器处理。
 1. 新建src/filter/moneyFilter.js,并且在调用的组件内引入,components中注册
 2. 编写vue里的filter属性,template使用filter:{{item.price | moneyFilter}}
+
+## 15. 首页热卖模块 Van-list组件
+
+* html/css部分在@/src/components/pages/shoppingMall.vue
+
+* Van-list组件的使用
+1. 引入List组件:在/src/App.vue文件中引入List组件
+2. shoppingMall.vue/script构造数据,data里声明hotGoods.
+3. axios里获得数据:this.hotGoods = response.data.data.hotGoods
+4. shoppingMall.vue/html中加入List组件，并使用van-row布局
+5. 使用/src/component/goodsInfoComponent.vue商品显示组件
+6. import引入组件,并在components里声明一下,最后模版内使用

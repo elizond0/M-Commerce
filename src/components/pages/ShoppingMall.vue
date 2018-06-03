@@ -35,21 +35,21 @@
     </div>
     <!--Recommend goods area-->
     <div class="recommend-area">
-        <div class="recommend-title">
-            商品推荐
-        </div>
-        <div class="recommend-body">
-          <swiper :options="swiperOption">
-            <swiper-slide v-for=" (item ,index) in recommendGoods" :key="index">
-              <div class="recommend-item">
-                <img v-lazy="item.image" width="80%" />
-                <div>{{item.goodsName}}</div>
-                <div>￥{{item.price}} (￥{{item.mallPrice|moneyFilter}})</div>
-                <!-- <div>￥{{item.price | moneyFilter}} (￥{{item.mallPrice | moneyFilter}})</div> -->
-              </div>
-            </swiper-slide>
-          </swiper>
-        </div>
+      <div class="recommend-title">
+          商品推荐
+      </div>
+      <div class="recommend-body">
+        <swiper :options="swiperOption">
+          <swiper-slide v-for=" (item ,index) in recommendGoods" :key="index">
+            <div class="recommend-item">
+              <img v-lazy="item.image" width="80%" />
+              <div>{{item.goodsName}}</div>
+              <div>￥{{item.price}} (￥{{item.mallPrice|moneyFilter}})</div>
+              <!-- <div>￥{{item.price | moneyFilter}} (￥{{item.mallPrice | moneyFilter}})</div> -->
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
     <!-- 自定义swiper组件 -->
     <!-- <div>
@@ -61,6 +61,20 @@
     <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
     <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
     <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
+    <!--Hot Area-->
+    <div class="hot-area">
+      <div class="hot-title">热卖商品</div>
+      <div class="hot-goods">
+        <!--list组件-->
+        <van-list>
+          <van-row gutter="20">
+            <van-col span="12" v-for="(item , index) in hotGoods" :key="index">
+              <goods-info :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info>
+            </van-col>
+          </van-row>
+        </van-list>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,7 +86,8 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 // import swiperDefault1 from "../swiper/swiperDefault1";
 // import swiperDefault2 from "../swiper/swiperDefault2";
 import floorComponent from "../component/floorComponent";
-import {toMoney} from "@/filter/moneyFilter.js"; //@代表src目录,在/build/webpack.base.conf.js里找到这个配置项
+import { toMoney } from "@/filter/moneyFilter.js"; //@代表src目录,在/build/webpack.base.conf.js里找到这个配置项
+import goodsInfo from '../component/goodsInfoComponent' //商品显示组件
 
 export default {
   data() {
@@ -90,7 +105,8 @@ export default {
       floor1: [], //楼层数据
       floor2: [],
       floor3: [],
-      floorName: {} //楼层标题
+      floorName: {}, //楼层标题
+      hotGoods: [] //热卖商品
     };
   },
   created() {
@@ -118,6 +134,7 @@ export default {
 
           this.floorName = response.data.data.floorName;
           // console.log(response.data.data.floorName);
+          this.hotGoods = response.data.data.hotGoods;
         }
       })
       .catch(error => {
@@ -131,6 +148,7 @@ export default {
     // swiperDefault1,
     // swiperDefault2,
     floorComponent,
+    goodsInfo
   },
   filters: {
     moneyFilter(money = 0) {
@@ -201,5 +219,11 @@ export default {
 }
 .swiper-area {
   height: 145px;
+}
+.hot-area {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
 }
 </style>
